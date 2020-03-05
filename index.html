@@ -1,0 +1,14 @@
+<body></body>
+<script>
+if (window.SharedWorker) {
+	var worker = new SharedWorker('shared_worker.js')
+	worker.port.postMessage(true)
+	worker.port.onmessage = function (e) {
+		var d = document.createElement('div')
+		d.innerHTML = e.data
+		var body = document.getElementsByTagName('body')[0]
+		body.appendChild(d)
+	}
+}
+</script>
+
